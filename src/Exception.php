@@ -1,9 +1,3 @@
 <?php
 
-class Exception {
-  protected $message = '';
-
-  public function __construct($message) {
-    $this->message = $message;
-  }
-}
+class Exception extends \Exception {}
