@@ -1,0 +1,25 @@
+#!/usr/bin/env php
+<?php
+use \Users\daniel\programming\php-web-server\Server;
+use \Users\daniel\programming\php-web-server\Request;
+use \Users\daniel\programming\php-web-server\Response;
+
+// never need the first argument
+array_shift($argv);
+
+// the next argument should be the port if not using 80 as the default
+if (empty($argv)) {
+  $port = 80;
+} else {
+  $port = array_shift($argv);
+}
+
+require 'vendor/autoload.php';
+
+// create a new server instance
+$server = new Server('127.0.0.1', $port);
+
+// start listening
+$server->listen(function(Request $request) {
+  return new Response('Hello, World!');
+});
